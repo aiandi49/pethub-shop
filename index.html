@@ -14,7 +14,7 @@
   --surface:   #161624;
   --surface2:  #1C1C2E;
   --border:    rgba(255,255,255,0.06);
-  --border2:   rgba(255,255,255,0.12);
+  --border2:   rgba(255,255,255,0.14);
   --text:      #EEEEF8;
   --text2:     #7878A0;
   --text3:     #3A3A58;
@@ -27,25 +27,21 @@
   --teal-dim:  rgba(0,205,180,0.10);
   --violet:    #9F7FFF;
 }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; overflow-x: hidden; }
-
 body {
   background: var(--bg);
   color: var(--text);
   font-family: 'Syne', sans-serif;
 }
-
 body::before {
   content: '';
   position: fixed; inset: 0; z-index: 0; pointer-events: none;
   background:
-    radial-gradient(ellipse 80% 50% at 10% 0%, rgba(245,200,74,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 50% at 10% 0%, rgba(245,200,74,0.06) 0%, transparent 60%),
     radial-gradient(ellipse 60% 40% at 90% 20%, rgba(0,205,180,0.04) 0%, transparent 55%),
     radial-gradient(ellipse 50% 60% at 50% 100%, rgba(159,127,255,0.04) 0%, transparent 65%);
 }
-
 .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
 
 /* ── NAV ── */
@@ -60,302 +56,153 @@ nav {
   transition: background 0.3s;
 }
 nav.scrolled { background: rgba(7,7,15,0.97); }
-.nav-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.3rem; font-weight: 700;
-  color: var(--text); text-decoration: none; letter-spacing: -0.5px;
-}
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--text); text-decoration: none; }
 .nav-logo span { color: var(--gold); }
-.nav-pill {
-  background: var(--gold-dim); color: var(--gold);
-  border: 1px solid rgba(245,200,74,0.25);
-  border-radius: 20px; padding: 4px 14px;
-  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-}
-.nav-back {
-  color: var(--text2); text-decoration: none; font-size: 0.85rem;
-  transition: color 0.2s;
-}
+.nav-pill { background: var(--gold-dim); color: var(--gold); border: 1px solid rgba(245,200,74,0.25); border-radius: 20px; padding: 4px 14px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.nav-back { color: var(--text2); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
 .nav-back:hover { color: var(--text); }
 
 /* ── HERO ── */
-.hero {
-  padding: 130px 0 80px;
-  position: relative; overflow: hidden;
-}
-.hero-eyebrow {
-  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--gold);
-  margin-bottom: 20px;
-}
-.hero h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(3rem, 7vw, 5.5rem);
-  font-weight: 900; line-height: 1.0;
-  letter-spacing: -2px; margin-bottom: 24px;
-}
+.hero { padding: 130px 0 80px; position: relative; }
+.hero-eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 900; line-height: 1.0; letter-spacing: -2px; margin-bottom: 24px; }
 .hero h1 em { font-style: italic; color: var(--gold); }
-.hero-sub {
-  max-width: 560px; color: var(--text2);
-  font-size: 1.05rem; line-height: 1.7; margin-bottom: 36px;
-}
-.btn-gold {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--gold); color: #07070F;
-  padding: 14px 28px; border-radius: 14px;
-  font-weight: 800; font-size: 0.95rem; text-decoration: none;
-  transition: all 0.2s; border: none; cursor: pointer;
-}
+.hero-sub { max-width: 580px; color: var(--text2); font-size: 1.05rem; line-height: 1.75; margin-bottom: 36px; }
+.hero-sub strong { color: var(--text); }
+.btn-gold { display: inline-flex; align-items: center; gap: 8px; background: var(--gold); color: #07070F; padding: 14px 28px; border-radius: 14px; font-weight: 800; font-size: 0.95rem; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer; font-family: 'Syne', sans-serif; }
 .btn-gold:hover { background: #f0c030; transform: translateY(-2px); box-shadow: 0 12px 40px var(--gold-glow); }
-.btn-ghost {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: transparent; color: var(--text2);
-  padding: 14px 24px; border-radius: 14px;
-  font-weight: 600; font-size: 0.95rem; text-decoration: none;
-  border: 1px solid var(--border2); transition: all 0.2s;
-}
-.btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.25); }
 .hero-cta-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 36px; }
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(0,205,180,0.08); border: 1px solid rgba(0,205,180,0.2);
-  color: var(--teal); border-radius: 20px; padding: 8px 16px;
-  font-size: 0.82rem; font-weight: 600;
-}
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,205,180,0.08); border: 1px solid rgba(0,205,180,0.2); color: var(--teal); border-radius: 20px; padding: 8px 16px; font-size: 0.82rem; font-weight: 600; }
 
-/* ── AFFILIATE BANNER ── */
-.affiliate-banner {
-  display: flex; align-items: center; gap: 24px;
-  background: var(--surface); border: 1px solid var(--border2);
-  border-radius: 20px; padding: 24px 28px; margin: 0 0 60px;
+/* ── FREE FOREVER BANNER ── */
+.free-banner {
+  background: linear-gradient(135deg, rgba(245,200,74,0.08) 0%, rgba(0,205,180,0.06) 100%);
+  border: 1px solid rgba(245,200,74,0.18);
+  border-radius: 20px; padding: 32px 36px;
+  margin-bottom: 70px;
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
 }
-.affiliate-banner-icon { font-size: 2rem; flex-shrink: 0; }
-.affiliate-banner-text { flex: 1; }
-.affiliate-banner-text strong { display: block; font-size: 1rem; margin-bottom: 4px; }
-.affiliate-banner-text p { color: var(--text2); font-size: 0.88rem; line-height: 1.5; }
-.affiliate-banner-badge {
-  background: var(--gold-dim); color: var(--gold);
-  border: 1px solid rgba(245,200,74,0.2);
-  border-radius: 12px; padding: 8px 16px;
-  font-size: 0.78rem; font-weight: 700; white-space: nowrap;
-}
+.free-pillar { text-align: center; }
+.free-pillar-icon { font-size: 2rem; margin-bottom: 10px; }
+.free-pillar-title { font-weight: 800; font-size: 1rem; margin-bottom: 6px; }
+.free-pillar-desc { color: var(--text2); font-size: 0.85rem; line-height: 1.6; }
+.free-pillar-desc strong { color: var(--gold); }
 
 /* ── CATEGORY TABS ── */
-.section-label {
-  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--text3);
-  margin-bottom: 20px;
-}
-.cat-tabs {
-  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px;
-}
-.cat-tab {
-  background: var(--surface); border: 1px solid var(--border2);
-  color: var(--text2); border-radius: 30px;
-  padding: 9px 18px; font-size: 0.85rem; font-weight: 600;
-  cursor: pointer; transition: all 0.2s; font-family: 'Syne', sans-serif;
-}
+.section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); margin-bottom: 20px; }
+.cat-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; padding-top: 8px; }
+.cat-tab { background: var(--surface); border: 1px solid var(--border2); color: var(--text2); border-radius: 30px; padding: 9px 18px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: 'Syne', sans-serif; }
 .cat-tab:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
-.cat-tab.active {
-  background: var(--gold); color: #07070F;
-  border-color: var(--gold);
-}
+.cat-tab.active { background: var(--gold); color: #07070F; border-color: var(--gold); }
 
 /* ── PRODUCT GRID ── */
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 24px;
-}
-.product-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 20px; overflow: hidden;
-  transition: all 0.3s;
-  opacity: 1;
-}
-.product-card:hover {
-  border-color: var(--border2);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-}
-
-/* ── PRODUCT IMAGE ── */
-.product-img {
-  position: relative;
-  width: 100%; height: 220px;
-  overflow: hidden;
-  background: var(--surface2);
-}
-.product-img img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-  display: block;
-}
-.product-card:hover .product-img img { transform: scale(1.05); }
-
-/* Fallback emoji for failed images */
-.product-img .emoji-fallback {
+.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+.product-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; transition: all 0.3s; }
+.product-card:hover { border-color: var(--border2); transform: translateY(-4px); box-shadow: 0 24px 60px rgba(0,0,0,0.5); }
+.product-img { position: relative; width: 100%; height: 240px; overflow: hidden; background: var(--surface2); }
+.product-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block; }
+.product-card:hover .product-img img { transform: scale(1.04); }
+.product-img .img-overlay {
   position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 4rem;
-  background: linear-gradient(135deg, #141008 0%, #0d0b04 100%);
+  background: linear-gradient(to bottom, transparent 50%, rgba(7,7,15,0.5) 100%);
+  pointer-events: none;
 }
 
-.product-badge {
-  position: absolute; top: 12px; left: 12px;
-  border-radius: 8px; padding: 4px 10px;
-  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em;
-  text-transform: uppercase; z-index: 2;
+/* Printify badge — always show on white label items */
+.printify-badge {
+  position: absolute; bottom: 12px; left: 12px;
+  background: rgba(7,7,15,0.85); backdrop-filter: blur(8px);
+  border: 1px solid rgba(245,200,74,0.3);
+  color: var(--gold); border-radius: 8px;
+  padding: 4px 10px; font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase; z-index: 2;
 }
+
+.product-badge { position: absolute; top: 12px; left: 12px; border-radius: 8px; padding: 4px 10px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; z-index: 2; }
 .badge-hot   { background: var(--coral-dim); color: var(--coral); border: 1px solid rgba(255,92,108,0.3); }
 .badge-new   { background: var(--teal-dim); color: var(--teal); border: 1px solid rgba(0,205,180,0.3); }
 .badge-brand { background: var(--gold-dim); color: var(--gold); border: 1px solid rgba(245,200,74,0.3); }
-.badge-affiliate { background: rgba(159,127,255,0.1); color: var(--violet); border: 1px solid rgba(159,127,255,0.3); }
+.badge-popular { background: rgba(159,127,255,0.12); color: var(--violet); border: 1px solid rgba(159,127,255,0.3); }
 
-.product-app-tag {
-  position: absolute; bottom: 12px; right: 12px;
-  border-radius: 8px; padding: 4px 10px;
-  font-size: 0.7rem; font-weight: 700; z-index: 2;
-}
-.app-pawpack   { background: rgba(245,200,74,0.15); color: var(--gold); border: 1px solid rgba(245,200,74,0.2); }
-.app-petconnect { background: rgba(0,205,180,0.12); color: var(--teal); border: 1px solid rgba(0,205,180,0.2); }
-.app-pawmatch  { background: rgba(255,92,108,0.12); color: var(--coral); border: 1px solid rgba(255,92,108,0.2); }
+.product-body { padding: 22px 24px 24px; }
+.product-name { font-size: 1.08rem; font-weight: 700; margin-bottom: 8px; }
+.product-desc { color: var(--text2); font-size: 0.87rem; line-height: 1.6; margin-bottom: 18px; }
+.product-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.product-price { font-family: 'DM Mono', monospace; font-size: 1.15rem; font-weight: 500; color: var(--gold); }
+.product-price small { color: var(--text3); font-size: 0.72rem; font-family: 'Syne', sans-serif; display: block; }
+.btn-shop { background: var(--gold); color: #07070F; border: none; border-radius: 10px; padding: 10px 20px; font-size: 0.88rem; font-weight: 800; cursor: pointer; transition: all 0.2s; font-family: 'Syne', sans-serif; text-decoration: none; display: inline-block; }
+.btn-shop:hover { background: #f0c030; transform: translateY(-1px); }
+.btn-soon { background: var(--surface2); color: var(--text2); border: 1px solid var(--border2); border-radius: 10px; padding: 10px 20px; font-size: 0.88rem; font-weight: 700; cursor: default; font-family: 'Syne', sans-serif; }
 
-.product-body { padding: 20px 22px 22px; }
-.product-name {
-  font-size: 1.05rem; font-weight: 700; margin-bottom: 8px;
+/* ── HOW IT WORKS ── */
+.how-section { padding: 80px 0; }
+.how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 40px; }
+.how-step { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 28px 24px; text-align: center; position: relative; }
+.how-step::after {
+  content: '→';
+  position: absolute; right: -18px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--text3); font-size: 1.2rem; z-index: 2;
 }
-.product-desc {
-  color: var(--text2); font-size: 0.87rem; line-height: 1.6; margin-bottom: 18px;
-}
-.product-footer {
-  display: flex; align-items: center; justify-content: space-between; gap: 12px;
-}
-.product-price {
-  font-family: 'DM Mono', monospace;
-  font-size: 1.1rem; font-weight: 500; color: var(--gold);
-  display: flex; align-items: baseline; gap: 6px;
-}
-.product-price small { color: var(--text3); font-size: 0.72rem; font-family: 'Syne', sans-serif; }
-.product-price .was {
-  color: var(--text3); font-size: 0.85rem; text-decoration: line-through;
-}
-.btn-shop {
-  background: var(--surface2); color: var(--text);
-  border: 1px solid var(--border2);
-  border-radius: 10px; padding: 9px 18px;
-  font-size: 0.85rem; font-weight: 700;
-  cursor: pointer; transition: all 0.2s;
-  font-family: 'Syne', sans-serif; text-decoration: none;
-  display: inline-block;
-}
-.btn-shop:hover { background: var(--gold); color: #07070F; border-color: var(--gold); }
+.how-step:last-child::after { display: none; }
+.how-num { font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--gold); font-weight: 500; margin-bottom: 12px; }
+.how-icon { font-size: 2rem; margin-bottom: 12px; }
+.how-title { font-weight: 700; font-size: 0.95rem; margin-bottom: 6px; }
+.how-desc { color: var(--text2); font-size: 0.82rem; line-height: 1.5; }
 
-/* ── FEATURED BAND ── */
-.featured-band {
+/* ── FEATURED SECTION ── */
+.featured-section {
   background: var(--surface);
   border: 1px solid var(--border2);
   border-radius: 24px; padding: 60px;
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 60px; align-items: center;
-  margin-bottom: 80px;
+  margin: 0 0 80px;
 }
-.featured-eyebrow {
-  font-size: 0.78rem; font-weight: 700;
-  letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 16px;
-}
-.featured-band h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.8rem; font-weight: 900;
-  line-height: 1.1; letter-spacing: -1px; margin-bottom: 20px;
-}
-.featured-band h2 em { font-style: italic; color: var(--gold); }
-.featured-band p { color: var(--text2); line-height: 1.7; margin-bottom: 28px; }
+.featured-eyebrow { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+.featured-section h2 { font-family: 'Playfair Display', serif; font-size: 2.6rem; font-weight: 900; line-height: 1.1; letter-spacing: -1px; margin-bottom: 20px; }
+.featured-section h2 em { font-style: italic; color: var(--gold); }
+.featured-section p { color: var(--text2); line-height: 1.75; margin-bottom: 28px; font-size: 0.95rem; }
 .featured-perks { margin-bottom: 32px; }
-.featured-perk {
-  display: flex; align-items: center; gap: 10px;
-  color: var(--text2); font-size: 0.88rem; padding: 7px 0;
-}
+.featured-perk { display: flex; align-items: center; gap: 10px; color: var(--text2); font-size: 0.88rem; padding: 7px 0; }
 .featured-perk::before { content: '✓'; color: var(--teal); font-weight: 800; flex-shrink: 0; }
-.featured-visual {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-.featured-tile {
-  background: var(--surface2); border: 1px solid var(--border2);
-  border-radius: 16px; padding: 28px 16px;
-  text-align: center; transition: all 0.2s;
-}
-.featured-tile:hover { border-color: rgba(245,200,74,0.3); transform: translateY(-2px); }
-.featured-tile .tile-emoji { font-size: 2.2rem; display: block; margin-bottom: 8px; }
-.featured-tile span { color: var(--text2); font-size: 0.82rem; font-weight: 600; }
+.featured-visual { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.featured-tile { background: var(--surface2); border: 1px solid var(--border2); border-radius: 16px; overflow: hidden; aspect-ratio: 1; position: relative; }
+.featured-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+.featured-tile:hover img { transform: scale(1.05); }
+.featured-tile-label { position: absolute; bottom: 10px; left: 10px; background: rgba(7,7,15,0.85); color: var(--gold); font-size: 0.72rem; font-weight: 700; padding: 4px 10px; border-radius: 6px; }
 
-/* ── PRINTIFY SECTION ── */
-.printify-section {
-  background: linear-gradient(135deg, rgba(245,200,74,0.06) 0%, rgba(0,205,180,0.04) 100%);
+/* ── NOTIFY SECTION ── */
+.notify-section {
+  background: linear-gradient(135deg, rgba(245,200,74,0.07) 0%, rgba(0,205,180,0.05) 100%);
   border: 1px solid rgba(245,200,74,0.15);
-  border-radius: 24px; padding: 48px;
+  border-radius: 24px; padding: 52px 48px;
   margin-bottom: 80px; text-align: center;
 }
-.printify-section h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem; font-weight: 900; margin-bottom: 12px;
-}
-.printify-section h3 em { font-style: italic; color: var(--gold); }
-.printify-section p { color: var(--text2); max-width: 560px; margin: 0 auto 32px; line-height: 1.7; }
-.printify-items {
-  display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin-bottom: 32px;
-}
-.printify-item {
-  background: var(--surface); border: 1px solid var(--border2);
-  border-radius: 14px; padding: 16px 20px;
-  font-size: 0.88rem; font-weight: 600; color: var(--text2);
-  display: flex; align-items: center; gap: 8px;
-}
-.printify-item span { color: var(--text); }
-
-/* ── PARTNERS ── */
-.partners-section { padding: 0 0 100px; }
-.partners-section h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem; font-weight: 700; margin-bottom: 12px;
-}
-.partners-section > .wrap > p { color: var(--text2); margin-bottom: 40px; }
-.partners-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px;
-}
-.partner-card {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: 16px; padding: 24px;
-  text-align: center; transition: all 0.25s;
-}
-.partner-card:hover { border-color: var(--border2); transform: translateY(-2px); }
-.partner-logo { font-size: 2rem; margin-bottom: 10px; }
-.partner-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
-.partner-commission { color: var(--teal); font-size: 0.8rem; font-family: 'DM Mono', monospace; }
+.notify-section h3 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; margin-bottom: 14px; }
+.notify-section h3 em { font-style: italic; color: var(--gold); }
+.notify-section p { color: var(--text2); max-width: 520px; margin: 0 auto 32px; line-height: 1.75; }
+.notify-form { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.notify-input { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; padding: 13px 20px; color: #fff; font-family: 'Syne', sans-serif; font-size: 0.95rem; min-width: 280px; outline: none; transition: border-color 0.2s; }
+.notify-input:focus { border-color: rgba(245,200,74,0.4); }
+.notify-confirm { display: none; margin-top: 16px; color: var(--teal); font-weight: 600; font-size: 0.95rem; }
 
 /* ── FOOTER ── */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 40px 0; text-align: center;
-}
-.footer-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.6rem; font-weight: 900; margin-bottom: 8px;
-}
+footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: center; }
+.footer-logo { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 900; margin-bottom: 8px; }
 .footer-logo span { color: var(--gold); }
 .footer-sub { color: var(--text3); font-size: 0.82rem; }
 
-/* ── REVEAL ── */
-.reveal { opacity: 1; transform: none; }
-
-@media (max-width: 768px) {
-  .featured-band { grid-template-columns: 1fr; padding: 32px 24px; }
-  .affiliate-banner { flex-direction: column; text-align: center; }
-  .printify-section { padding: 32px 24px; }
+@media (max-width: 900px) {
+  .how-grid { grid-template-columns: 1fr 1fr; }
+  .how-step::after { display: none; }
+  .featured-section { grid-template-columns: 1fr; padding: 36px 28px; }
+  .free-banner { grid-template-columns: 1fr; gap: 24px; padding: 28px 24px; }
+}
+@media (max-width: 600px) {
+  .how-grid { grid-template-columns: 1fr; }
+  .featured-visual { grid-template-columns: 1fr 1fr; }
 }
 </style>
 </head>
@@ -367,276 +214,209 @@ footer {
   <a href="index.html" class="nav-back">← Back to Hub</a>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <div class="hero-eyebrow">PetHub Shop</div>
+    <div class="hero-eyebrow">PetHub Shop — 100% White Label</div>
     <h1>Gear for<br><em>Good Dogs</em><br>&amp; their people.</h1>
-    <p class="hero-sub">Everything stays free. We partner with the brands you already love — so when you shop through PetHub, you support the community at zero extra cost to you.</p>
+    <p class="hero-sub">
+      <strong>The apps are free. They stay free because of you.</strong><br>
+      When you buy PetHub gear, you're not just getting something great for your pup — you're keeping the lights on, the servers running, and this whole community alive. No ads. No paywalls. Just great products and good dogs. That's the deal.
+    </p>
     <div class="hero-cta-row">
-      <a href="#products" class="btn-gold">Shop Now 🐾</a>
-      <a href="#partners" class="btn-ghost">Our Partners →</a>
+      <a href="#products" class="btn-gold">Shop the Collection 🐾</a>
     </div>
-    <div class="hero-badge">Every purchase keeps PetHub free for your community</div>
+    <div class="hero-badge">🔥 Every purchase keeps PetHub free — forever</div>
   </div>
 </section>
 
+<!-- FREE FOREVER PILLARS -->
 <div class="wrap">
-  <div class="affiliate-banner reveal">
-    <div class="affiliate-banner-icon">🤝</div>
-    <div class="affiliate-banner-text">
-      <strong>Affiliate Links + PetHub White Label</strong>
-      <p>We earn a small commission on affiliate links — at no extra cost to you. PetHub branded items are printed on-demand via Printify and ship directly to your door.</p>
+  <div class="free-banner">
+    <div class="free-pillar">
+      <div class="free-pillar-icon">🆓</div>
+      <div class="free-pillar-title">The Apps Stay Free</div>
+      <div class="free-pillar-desc">PetConnect, PawMatch & Paw Pack are <strong>always free</strong>. No subscriptions, no premium tiers, no gotchas.</div>
     </div>
-    <div class="affiliate-banner-badge">Always Free to Vote & Connect</div>
+    <div class="free-pillar">
+      <div class="free-pillar-icon">🛍️</div>
+      <div class="free-pillar-title">Shopping Keeps It That Way</div>
+      <div class="free-pillar-desc">Every PetHub product you buy goes directly toward <strong>servers, features & community growth</strong>. You shop, we build.</div>
+    </div>
+    <div class="free-pillar">
+      <div class="free-pillar-icon">🐾</div>
+      <div class="free-pillar-title">Your Brand, Your Community</div>
+      <div class="free-pillar-desc">Every item is <strong>PetHub branded</strong> — printed on demand, shipped to your door. No middlemen. No markups from strangers.</div>
+    </div>
   </div>
 </div>
 
 <!-- PRODUCTS -->
-<section id="products" style="padding: 20px 0 100px;">
+<section id="products" style="padding: 0 0 100px;">
   <div class="wrap">
     <div class="section-label">Browse by Category</div>
     <div class="cat-tabs">
       <button class="cat-tab active" data-cat="all">🐾 All Products</button>
-      <button class="cat-tab" data-cat="treats">🦴 Treats & Food</button>
-      <button class="cat-tab" data-cat="toys">🎾 Toys</button>
       <button class="cat-tab" data-cat="apparel">👕 Apparel</button>
-      <button class="cat-tab" data-cat="grooming">✂️ Grooming</button>
       <button class="cat-tab" data-cat="accessories">📿 Accessories</button>
-      <button class="cat-tab" data-cat="pethub">⭐ PetHub Brand</button>
+      <button class="cat-tab" data-cat="pet">🐶 For Your Pet</button>
+      <button class="cat-tab" data-cat="human">🧑 For You</button>
     </div>
 
     <div class="products-grid" id="products-grid">
 
-      <!-- ══ TREATS ══ -->
-      <div class="product-card reveal" data-cat="treats">
+      <!-- ══ APPAREL ══ -->
+      <div class="product-card" data-cat="apparel human">
         <div class="product-img">
-          <img src="https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?w=600&q=80" alt="Dog treats" onerror="this.style.display='none'">
-          <div class="emoji-fallback" style="display:none">🦴</div>
+          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=700&q=85" alt="PetHub Logo Tee" loading="lazy">
+          <div class="img-overlay"></div>
           <div class="product-badge badge-hot">Best Seller</div>
-          <div class="product-app-tag app-pawpack">Paw Pack Pick</div>
-        </div>
-        <div class="product-body">
-          <div class="product-name">Zuke's Mini Naturals</div>
-          <div class="product-desc">Soft, bite-sized training treats with real chicken. Under 3 calories each — perfect for training between voting sessions.</div>
-          <div class="product-footer">
-            <div class="product-price">$9.99 <small>via Chewy</small></div>
-            <a class="btn-shop" href="https://www.chewy.com/zukes-mini-naturals-chicken-recipe/dp/36173" target="_blank" rel="noopener">Shop →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card reveal" data-cat="treats">
-        <div class="product-img">
-          <img src="https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?w=600&q=80" alt="Bully sticks" onerror="this.style.display='none'">
-          <div class="emoji-fallback" style="display:none">🥩</div>
-          <div class="product-badge badge-new">New</div>
-          <div class="product-app-tag app-petconnect">PetConnect Fave</div>
-        </div>
-        <div class="product-body">
-          <div class="product-name">Bully Sticks 6"</div>
-          <div class="product-desc">100% natural, single-ingredient beef bully sticks. Long-lasting chew for heavy chewers. Odor-free formula.</div>
-          <div class="product-footer">
-            <div class="product-price">$18.99 <small>via Amazon</small></div>
-            <a class="btn-shop" href="https://www.amazon.com/s?k=bully+sticks+6+inch+odor+free" target="_blank" rel="noopener">Shop →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card reveal" data-cat="treats pethub">
-        <div class="product-img" style="background: linear-gradient(135deg, #1a1408 0%, #0f0d04 100%);">
-          <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80" alt="PetHub peanut butter bites" onerror="this.style.display='none'">
-          <div class="emoji-fallback" style="display:none">🐾</div>
-          <div class="product-badge badge-brand">PetHub Brand</div>
-        </div>
-        <div class="product-body">
-          <div class="product-name">PetHub Peanut Butter Bites</div>
-          <div class="product-desc">All-natural, grain-free peanut butter training treats. Our own recipe — proudly made for the community, by the community.</div>
-          <div class="product-footer">
-            <div class="product-price">$14.99</div>
-            <a class="btn-shop" href="https://www.printify.com" target="_blank" rel="noopener">Coming Soon</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ══ TOYS ══ -->
-      <div class="product-card reveal" data-cat="toys">
-        <div class="product-img">
-          <img src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?w=600&q=80" alt="KONG toy" onerror="this.style.display='none'">
-          <div class="emoji-fallback" style="display:none">🎾</div>
-          <div class="product-badge badge-hot">Top Rated</div>
-          <div class="product-app-tag app-pawmatch">PawMatch Approved</div>
-        </div>
-        <div class="product-body">
-          <div class="product-name">KONG Classic</div>
-          <div class="product-desc">The legendary rubber chew toy. Stuff with peanut butter, freeze overnight, keep your pup busy while you swipe on PawMatch.</div>
-          <div class="product-footer">
-            <div class="product-price">$13.99 <div class="was">$17.99</div></div>
-            <a class="btn-shop" href="https://www.chewy.com/kong-classic-dog-toy/dp/32749" target="_blank" rel="noopener">Shop →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card reveal" data-cat="toys">
-        <div class="product-img">
-          <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600&q=80" alt="BarkBox" onerror="this.style.display='none'">
-          <div class="emoji-fallback" style="display:none">🎁</div>
-          <div class="product-badge badge-affiliate">Affiliate</div>
-        </div>
-        <div class="product-body">
-          <div class="product-name">BarkBox Monthly</div>
-          <div class="product-desc">Curated box of 2 toys + 2 treats + 1 chew every month. Themed collections your dog will actually destroy with joy.</div>
-          <div class="product-footer">
-            <div class="product-price">$23<small>/mo via BarkBox</small></div>
-            <a class="btn-shop" href="https://www.barkbox.com" target="_blank" rel="noopener">Shop →</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ══ APPAREL — WHITE LABEL via Printify ══ -->
-      <div class="product-card reveal" data-cat="apparel pethub">
-        <div class="product-img">
-          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80" alt="PetHub tee" onerror="this.style.display='none'">
-          <div class="emoji-fallback" style="display:none">👕</div>
-          <div class="product-badge badge-brand">PetHub Brand</div>
+          <div class="printify-badge">Printify · Ships 3–5 days</div>
         </div>
         <div class="product-body">
           <div class="product-name">PetHub Logo Tee</div>
-          <div class="product-desc">Soft ringspun cotton unisex tee with the PetHub logo in gold. Print-on-demand via Printify — ships in 3–5 days.</div>
+          <div class="product-desc">Soft ringspun cotton unisex tee with the PetHub paw logo in gold. Wear your pack with pride. Sizes XS–3XL.</div>
           <div class="product-footer">
-            <div class="product-price">$26.99</div>
-            <a class="btn-shop" href="#printify-section" onclick="scrollToPrintify()">Order →</a>
+            <div class="product-price">$26.99 <small>Print-on-demand</small></div>
+            <button class="btn-shop" onclick="orderItem('PetHub Logo Tee', 26.99)">Order →</button>
           </div>
         </div>
       </div>
 
-      <div class="product-card reveal" data-cat="apparel pethub">
+      <div class="product-card" data-cat="apparel human">
         <div class="product-img">
-          <img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=600&q=80" alt="PetHub hoodie" onerror="this.style.display='none'">
-          <div class="emoji-fallback" style="display:none">🧥</div>
-          <div class="product-badge badge-brand">PetHub Brand</div>
-          <div class="product-app-tag app-pawpack">Paw Pack Pick</div>
+          <img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=700&q=85" alt="PetHub Hoodie" loading="lazy">
+          <div class="img-overlay"></div>
+          <div class="product-badge badge-new">New</div>
+          <div class="printify-badge">Printify · Ships 3–5 days</div>
         </div>
         <div class="product-body">
           <div class="product-name">PetHub Hoodie</div>
-          <div class="product-desc">Premium pullover hoodie. "I vote hot 🔥" on the back, PetHub paw logo on the chest. Unisex sizing XS–3XL.</div>
+          <div class="product-desc">"I vote hot 🔥" on the back. PetHub paw on the chest. Premium pullover fleece, unisex XS–3XL. Your couch will thank you.</div>
           <div class="product-footer">
-            <div class="product-price">$42.99</div>
-            <a class="btn-shop" href="#printify-section" onclick="scrollToPrintify()">Order →</a>
+            <div class="product-price">$42.99 <small>Print-on-demand</small></div>
+            <button class="btn-shop" onclick="orderItem('PetHub Hoodie', 42.99)">Order →</button>
           </div>
         </div>
       </div>
 
-      <div class="product-card reveal" data-cat="apparel">
+      <div class="product-card" data-cat="apparel human">
         <div class="product-img">
-          <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&q=80" alt="Dog puffer vest" onerror="this.style.display='none'">
-          <div class="emoji-fallback" style="display:none">🐕</div>
-          <div class="product-badge badge-new">New</div>
+          <img src="https://images.unsplash.com/photo-1622445275463-afa2ab738c73?w=700&q=85" alt="PetHub Tote Bag" loading="lazy">
+          <div class="img-overlay"></div>
+          <div class="product-badge badge-popular">Popular</div>
+          <div class="printify-badge">Printify · Ships 3–5 days</div>
         </div>
         <div class="product-body">
-          <div class="product-name">Canada Pooch Puffer Vest</div>
-          <div class="product-desc">Stylish puffer vest with fleece lining for your dog. Because hot dogs need to stay warm in winter. Sizes XS–XXL.</div>
+          <div class="product-name">PetHub Tote Bag</div>
+          <div class="product-desc">Heavy canvas tote with the PetHub logo. Perfect for dog park runs, vet trips, or just carrying life's essentials. 15"×15".</div>
           <div class="product-footer">
-            <div class="product-price">$44.99 <small>via Chewy</small></div>
-            <a class="btn-shop" href="https://www.chewy.com/s?query=canada+pooch+puffer+vest" target="_blank" rel="noopener">Shop →</a>
+            <div class="product-price">$18.99 <small>Print-on-demand</small></div>
+            <button class="btn-shop" onclick="orderItem('PetHub Tote Bag', 18.99)">Order →</button>
           </div>
         </div>
       </div>
 
-      <!-- ══ GROOMING ══ -->
-      <div class="product-card reveal" data-cat="grooming">
+      <!-- ══ PET ACCESSORIES ══ -->
+      <div class="product-card" data-cat="accessories pet">
         <div class="product-img">
-          <img src="https://images.unsplash.com/photo-1625311842010-5a2e565bbf97?w=600&q=80" alt="Dog grooming" onerror="this.style.display='none'">
-          <div class="emoji-fallback" style="display:none">✂️</div>
-          <div class="product-badge badge-hot">Best Seller</div>
-        </div>
-        <div class="product-body">
-          <div class="product-name">Furminator Deshedding Tool</div>
-          <div class="product-desc">Reaches through topcoat to safely remove loose undercoat. Reduces shedding up to 90%. Your sofa says thank you.</div>
-          <div class="product-footer">
-            <div class="product-price">$29.99 <small>via Amazon</small></div>
-            <a class="btn-shop" href="https://www.amazon.com/s?k=furminator+deshedding+tool" target="_blank" rel="noopener">Shop →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card reveal" data-cat="grooming pethub">
-        <div class="product-img">
-          <img src="https://images.unsplash.com/photo-1591946614720-90a587da4a36?w=600&q=80" alt="Dog shampoo" onerror="this.style.display='none'">
-          <div class="emoji-fallback" style="display:none">🛁</div>
-          <div class="product-badge badge-brand">PetHub Brand</div>
-        </div>
-        <div class="product-body">
-          <div class="product-name">PetHub Oatmeal Shampoo</div>
-          <div class="product-desc">Soothing oatmeal & aloe shampoo for sensitive skin. Hypoallergenic, pH balanced, smells like a hug. 16oz.</div>
-          <div class="product-footer">
-            <div class="product-price">$16.99</div>
-            <a class="btn-shop" href="#printify-section" onclick="scrollToPrintify()">Coming Soon</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- ══ ACCESSORIES ══ -->
-      <div class="product-card reveal" data-cat="accessories pethub">
-        <div class="product-img">
-          <img src="https://images.unsplash.com/photo-1559715541-5daf8a0296d0?w=600&q=80" alt="Dog ID tag" onerror="this.style.display='none'">
-          <div class="emoji-fallback" style="display:none">🏷️</div>
-          <div class="product-badge badge-brand">PetHub Brand</div>
-        </div>
-        <div class="product-body">
-          <div class="product-name">PetHub ID Tag</div>
-          <div class="product-desc">Stainless steel engraved tag with PetHub paw logo. Add your pet's name + your number. Every hot dog needs to get home safe.</div>
-          <div class="product-footer">
-            <div class="product-price">$12.99</div>
-            <a class="btn-shop" href="#printify-section" onclick="scrollToPrintify()">Order →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card reveal" data-cat="accessories">
-        <div class="product-img">
-          <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&q=80" alt="Dog harness" onerror="this.style.display='none'">
-          <div class="emoji-fallback" style="display:none">🦮</div>
-          <div class="product-badge badge-hot">Top Rated</div>
-          <div class="product-app-tag app-pawmatch">PawMatch Approved</div>
-        </div>
-        <div class="product-body">
-          <div class="product-name">Ruffwear Front Range Harness</div>
-          <div class="product-desc">Padded harness with two leash attachment points. Perfect for dogs who pull like they're auditioning for sled racing.</div>
-          <div class="product-footer">
-            <div class="product-price">$49.95 <small>via Chewy</small></div>
-            <a class="btn-shop" href="https://www.chewy.com/s?query=ruffwear+front+range+harness" target="_blank" rel="noopener">Shop →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card reveal" data-cat="accessories pethub">
-        <div class="product-img">
-          <img src="https://images.unsplash.com/photo-1600369671854-b8f4a25e4e8d?w=600&q=80" alt="PetHub collar" onerror="this.style.display='none'">
-          <div class="emoji-fallback" style="display:none">📿</div>
-          <div class="product-badge badge-brand">PetHub Brand</div>
-        </div>
-        <div class="product-body">
-          <div class="product-name">PawConnect Collar</div>
-          <div class="product-desc">Durable nylon collar with embroidered PetHub paw logo. Includes QR tag linking to your pet's PetConnect profile.</div>
-          <div class="product-footer">
-            <div class="product-price">$22.99</div>
-            <a class="btn-shop" href="#printify-section" onclick="scrollToPrintify()">Order →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card reveal" data-cat="accessories pethub">
-        <div class="product-img">
-          <img src="https://images.unsplash.com/photo-1598133894008-61f7fdb8cc3a?w=600&q=80" alt="PetHub bandana" onerror="this.style.display='none'">
-          <div class="emoji-fallback" style="display:none">🎀</div>
-          <div class="product-badge badge-brand">PetHub Brand</div>
+          <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=700&q=85" alt="PetHub Bandana" loading="lazy">
+          <div class="img-overlay"></div>
+          <div class="product-badge badge-hot">Fan Fave</div>
+          <div class="printify-badge">Printify · Ships 3–5 days</div>
         </div>
         <div class="product-body">
           <div class="product-name">PetHub Bandana 3-Pack</div>
-          <div class="product-desc">Snap-on bandanas with the PetHub paw logo. Soft cotton, machine washable. Because your dog deserves a fit check.</div>
+          <div class="product-desc">Snap-on pet bandanas with the PetHub paw logo. Soft cotton, machine washable. Because your dog deserves a fit check. S/M/L.</div>
           <div class="product-footer">
-            <div class="product-price">$18.99</div>
-            <a class="btn-shop" href="#printify-section" onclick="scrollToPrintify()">Order →</a>
+            <div class="product-price">$18.99 <small>Print-on-demand</small></div>
+            <button class="btn-shop" onclick="orderItem('PetHub Bandana 3-Pack', 18.99)">Order →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="accessories pet">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=700&q=85" alt="PawConnect Collar" loading="lazy">
+          <div class="img-overlay"></div>
+          <div class="product-badge badge-brand">PetHub Brand</div>
+          <div class="printify-badge">Printify · Ships 3–5 days</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">PawConnect Collar</div>
+          <div class="product-desc">Durable nylon collar with the embroidered PetHub paw logo. Includes a QR tag linking to your pet's PetConnect profile. 4 sizes.</div>
+          <div class="product-footer">
+            <div class="product-price">$22.99 <small>Print-on-demand</small></div>
+            <button class="btn-shop" onclick="orderItem('PawConnect Collar', 22.99)">Order →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="accessories pet">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1559715541-5daf8a0296d0?w=700&q=85" alt="PetHub Pet ID Tag" loading="lazy">
+          <div class="img-overlay"></div>
+          <div class="product-badge badge-new">New</div>
+          <div class="printify-badge">Printify · Ships 3–5 days</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">PetHub Pet ID Tag</div>
+          <div class="product-desc">Stainless steel engraved tag with PetHub paw logo on the front. Add your pet's name + your number on the back. Every dog gets home safe.</div>
+          <div class="product-footer">
+            <div class="product-price">$12.99 <small>Print-on-demand</small></div>
+            <button class="btn-shop" onclick="orderItem('PetHub Pet ID Tag', 12.99)">Order →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="accessories pet">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=700&q=85" alt="PetHub Dog Leash" loading="lazy">
+          <div class="img-overlay"></div>
+          <div class="product-badge badge-popular">Popular</div>
+          <div class="printify-badge">Printify · Ships 3–5 days</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">PetHub Leash</div>
+          <div class="product-desc">5ft nylon leash with PetHub paw logo printed along the strap. Padded handle, heavy-duty clasp. Built for dogs who walk their humans.</div>
+          <div class="product-footer">
+            <div class="product-price">$19.99 <small>Print-on-demand</small></div>
+            <button class="btn-shop" onclick="orderItem('PetHub Leash', 19.99)">Order →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="accessories pet">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=700&q=85" alt="PetHub Dog Bowl" loading="lazy">
+          <div class="img-overlay"></div>
+          <div class="product-badge badge-brand">PetHub Brand</div>
+          <div class="printify-badge">Printify · Ships 3–5 days</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">PetHub Feeding Mat + Bowl Set</div>
+          <div class="product-desc">Bone-shaped silicone feeding mat with the PetHub logo, paired with a stainless steel bowl. Non-slip base. Because even good dogs make messes.</div>
+          <div class="product-footer">
+            <div class="product-price">$24.99 <small>Print-on-demand</small></div>
+            <button class="btn-shop" onclick="orderItem('PetHub Feeding Mat + Bowl Set', 24.99)">Order →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ FOR HUMANS ══ -->
+      <div class="product-card" data-cat="human">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1510771463146-e89e6e86560e?w=700&q=85" alt="PetHub Mug" loading="lazy">
+          <div class="img-overlay"></div>
+          <div class="product-badge badge-new">New</div>
+          <div class="printify-badge">Printify · Ships 3–5 days</div>
+        </div>
+        <div class="product-body">
+          <div class="product-name">PetHub Coffee Mug</div>
+          <div class="product-desc">11oz ceramic mug with PetHub paw logo. "I'd rather be with my dog." Because honestly, same. Dishwasher safe.</div>
+          <div class="product-footer">
+            <div class="product-price">$14.99 <small>Print-on-demand</small></div>
+            <button class="btn-shop" onclick="orderItem('PetHub Coffee Mug', 14.99)">Order →</button>
           </div>
         </div>
       </div>
@@ -645,92 +425,114 @@ footer {
   </div>
 </section>
 
-<!-- PRINTIFY WHITE LABEL SECTION -->
-<div class="wrap" id="printify-section">
-  <div class="printify-section reveal">
-    <div style="font-size:2.5rem;margin-bottom:16px;">🖨️</div>
-    <h3>PetHub <em>White Label</em> is Print-on-Demand</h3>
-    <p>All PetHub branded apparel and accessories are fulfilled through <strong>Printify</strong> — printed only when ordered, shipped directly to your door. No inventory, no waste. Here's how to order:</p>
-    <div class="printify-items">
-      <div class="printify-item">👕 <span>Tees from $26.99</span></div>
-      <div class="printify-item">🧥 <span>Hoodies from $42.99</span></div>
-      <div class="printify-item">🏷️ <span>ID Tags from $12.99</span></div>
-      <div class="printify-item">🎀 <span>Bandanas from $18.99</span></div>
-      <div class="printify-item">📿 <span>Collars from $22.99</span></div>
-    </div>
-    <p style="margin-bottom:24px;font-size:0.9rem;">Our Printify store is launching soon. Drop your email below and we'll notify you the moment it goes live.</p>
-    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
-      <input type="email" id="notify-email" placeholder="your@email.com" style="
-        background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);
-        border-radius:12px;padding:12px 20px;color:#fff;font-family:'Syne',sans-serif;
-        font-size:0.95rem;min-width:260px;outline:none;
-      ">
-      <button onclick="notifyMe()" class="btn-gold">Notify Me 🐾</button>
-    </div>
-    <div id="notify-confirm" style="display:none;margin-top:16px;color:var(--teal);font-weight:600;">
-      ✓ You're on the list! We'll email you when the shop goes live.
-    </div>
-  </div>
-</div>
-
-<!-- FEATURED BAND -->
-<div class="wrap">
-  <div class="featured-band reveal">
-    <div>
-      <div class="featured-eyebrow">⭐ PetHub White Label</div>
-      <h2>Built by the<br><em>community,</em><br>for the community.</h2>
-      <p>Our white-label line is sourced from trusted pet manufacturers and branded exclusively for PetHub. Higher margins mean more features stay free. Better products mean happier pets.</p>
-      <div class="featured-perks">
-        <div class="featured-perk">No subscription required — buy what you need</div>
-        <div class="featured-perk">Every sale directly funds app development</div>
-        <div class="featured-perk">Print-on-demand via Printify — ships in 3–5 days</div>
-        <div class="featured-perk">Expanding catalog based on community votes</div>
-      </div>
-      <a href="#products" class="btn-gold" onclick="filterCat('pethub')">Shop PetHub Brand →</a>
-    </div>
-    <div class="featured-visual">
-      <div class="featured-tile"><span class="tile-emoji">🦴</span><span>Treats</span></div>
-      <div class="featured-tile"><span class="tile-emoji">🏷️</span><span>Tags</span></div>
-      <div class="featured-tile"><span class="tile-emoji">👕</span><span>Apparel</span></div>
-      <div class="featured-tile"><span class="tile-emoji">📿</span><span>Collars</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- AFFILIATE PARTNERS -->
-<section id="partners" class="partners-section">
+<!-- HOW IT WORKS -->
+<section class="how-section">
   <div class="wrap">
-    <h3>Our Affiliate Partners</h3>
-    <p>We earn a commission when you shop through these links — at no extra cost to you. Always.</p>
-    <div class="partners-grid">
-      <div class="partner-card reveal">
-        <div class="partner-logo">🐾</div>
-        <div class="partner-name">Chewy</div>
-        <div class="partner-commission">Up to 8% back</div>
+    <div class="section-label">How It Works</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;letter-spacing:-1px;margin-bottom:8px;">Order in 4 simple steps</h2>
+    <p style="color:var(--text2);margin-bottom:0;">No inventory. No risk. No waiting rooms.</p>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-num">01</div>
+        <div class="how-icon">🛒</div>
+        <div class="how-title">You Order</div>
+        <div class="how-desc">Pick your item, choose your size, check out. Payment goes to PetHub instantly.</div>
       </div>
-      <div class="partner-card reveal">
-        <div class="partner-logo">📦</div>
-        <div class="partner-name">Amazon Pets</div>
-        <div class="partner-commission">Up to 4% back</div>
+      <div class="how-step">
+        <div class="how-num">02</div>
+        <div class="how-icon">🖨️</div>
+        <div class="how-title">Printify Prints</div>
+        <div class="how-desc">We send your order to Printify. They print it fresh with your PetHub branding.</div>
       </div>
-      <div class="partner-card reveal">
-        <div class="partner-logo">🎁</div>
-        <div class="partner-name">BarkBox</div>
-        <div class="partner-commission">$15 per signup</div>
+      <div class="how-step">
+        <div class="how-num">03</div>
+        <div class="how-icon">📦</div>
+        <div class="how-title">Ships to You</div>
+        <div class="how-desc">Printify ships directly to your door in 3–5 business days. Tracking included.</div>
       </div>
-      <div class="partner-card reveal">
-        <div class="partner-logo">🐶</div>
-        <div class="partner-name">PetSmart</div>
-        <div class="partner-commission">Up to 6% back</div>
-      </div>
-      <div class="partner-card reveal">
-        <div class="partner-logo">🖨️</div>
-        <div class="partner-name">Printify</div>
-        <div class="partner-commission">White label fulfillment</div>
+      <div class="how-step">
+        <div class="how-num">04</div>
+        <div class="how-icon">🐾</div>
+        <div class="how-title">PetHub Stays Free</div>
+        <div class="how-desc">Your profit funds the apps. Everyone wins — you, your dog, the whole community.</div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- FEATURED BAND -->
+<div class="wrap">
+  <div class="featured-section">
+    <div>
+      <div class="featured-eyebrow">⭐ 100% PetHub White Label</div>
+      <h2>Your dog.<br>Your brand.<br><em>Your community.</em></h2>
+      <p>Every single item in this shop carries the PetHub name. No third-party logos, no affiliate redirects, no compromises. When you buy, you're supporting a community platform built by a dog person, for dog people.</p>
+      <div class="featured-perks">
+        <div class="featured-perk">Printed fresh when you order — no dead stock</div>
+        <div class="featured-perk">PetHub logo on every product, every item</div>
+        <div class="featured-perk">Ships in 3–5 days direct to your door</div>
+        <div class="featured-perk">Every sale keeps PetConnect, PawMatch & Paw Pack free</div>
+        <div class="featured-perk">Catalog grows based on what the community wants</div>
+      </div>
+      <a href="#products" class="btn-gold">Shop All PetHub Products →</a>
+    </div>
+    <div class="featured-visual">
+      <div class="featured-tile">
+        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=400&q=80" alt="Bandana">
+        <div class="featured-tile-label">Bandana</div>
+      </div>
+      <div class="featured-tile">
+        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80" alt="Tee">
+        <div class="featured-tile-label">Tee</div>
+      </div>
+      <div class="featured-tile">
+        <img src="https://images.unsplash.com/photo-1559715541-5daf8a0296d0?w=400&q=80" alt="ID Tag">
+        <div class="featured-tile-label">ID Tag</div>
+      </div>
+      <div class="featured-tile">
+        <img src="https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=400&q=80" alt="Hoodie">
+        <div class="featured-tile-label">Hoodie</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RETURNS POLICY -->
+<div class="wrap" style="margin-bottom:80px;">
+  <div style="background:var(--surface);border:1px solid var(--border2);border-radius:20px;padding:36px 40px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;">
+    <div>
+      <div style="font-size:1.5rem;margin-bottom:10px;">✅</div>
+      <div style="font-weight:700;margin-bottom:6px;">Defective or Wrong Item</div>
+      <div style="color:var(--text2);font-size:0.87rem;line-height:1.6;">We make it right — free reprint or full refund within 30 days. Just send us a photo.</div>
+    </div>
+    <div>
+      <div style="font-size:1.5rem;margin-bottom:10px;">📏</div>
+      <div style="font-weight:700;margin-bottom:6px;">Sizing Issues</div>
+      <div style="color:var(--text2);font-size:0.87rem;line-height:1.6;">Check our size guide before ordering. We offer exchange credit for sizing problems when reported within 14 days.</div>
+    </div>
+    <div>
+      <div style="font-size:1.5rem;margin-bottom:10px;">🖨️</div>
+      <div style="font-weight:700;margin-bottom:6px;">Change of Mind</div>
+      <div style="color:var(--text2);font-size:0.87rem;line-height:1.6;">Because each item is printed fresh to order, we can't accept returns for change of mind. Industry standard for POD.</div>
+    </div>
+  </div>
+</div>
+
+<!-- NOTIFY / LAUNCH -->
+<div class="wrap">
+  <div class="notify-section">
+    <div style="font-size:2.5rem;margin-bottom:16px;">🚀</div>
+    <h3>Shop is <em>launching soon</em></h3>
+    <p>We're setting up our Printify store now. Drop your email and you'll be first to know — plus get <strong style="color:var(--gold);">15% off your first order</strong> as a founding customer.</p>
+    <div class="notify-form">
+      <input type="email" id="notify-email" class="notify-input" placeholder="your@email.com">
+      <button class="btn-gold" onclick="notifyMe()">Get Early Access 🐾</button>
+    </div>
+    <div id="notify-confirm" class="notify-confirm">
+      ✓ You're on the list! We'll email you when the shop goes live — with your 15% off code.
+    </div>
+  </div>
+</div>
 
 <footer>
   <div class="wrap">
@@ -744,11 +546,10 @@ window.addEventListener('scroll', () => {
   document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 50);
 });
 
+// Category filter
 function filterCat(cat) {
   document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
-  document.querySelectorAll('.cat-tab').forEach(t => {
-    t.classList.toggle('active', t.dataset.cat === cat);
-  });
+  document.querySelectorAll('.cat-tab').forEach(t => t.classList.toggle('active', t.dataset.cat === cat));
   document.querySelectorAll('.product-card').forEach(card => {
     const cats = card.dataset.cat || '';
     card.style.display = (cat === 'all' || cats.includes(cat)) ? '' : 'none';
@@ -758,31 +559,29 @@ document.querySelectorAll('.cat-tab').forEach(tab => {
   tab.addEventListener('click', () => filterCat(tab.dataset.cat));
 });
 
-function scrollToPrintify() {
-  setTimeout(() => {
-    document.getElementById('printify-section').scrollIntoView({ behavior: 'smooth' });
-  }, 100);
+// Order button — opens notify section since store is launching soon
+function orderItem(name, price) {
+  // Once Printify store is live, replace this with the actual product URL
+  const section = document.querySelector('.notify-section');
+  section.scrollIntoView({ behavior: 'smooth' });
+  section.style.borderColor = 'rgba(245,200,74,0.4)';
+  setTimeout(() => section.style.borderColor = '', 2000);
+  document.getElementById('notify-email').focus();
 }
 
+// Email notify
 function notifyMe() {
   const email = document.getElementById('notify-email').value.trim();
   if (!email || !email.includes('@')) {
-    document.getElementById('notify-email').style.borderColor = 'var(--coral)';
+    document.getElementById('notify-email').style.borderColor = '#FF5C6C';
     return;
   }
   document.getElementById('notify-confirm').style.display = 'block';
   document.getElementById('notify-email').style.display = 'none';
   document.querySelector('[onclick="notifyMe()"]').style.display = 'none';
+  // TODO: Wire this to your email list (Mailchimp, Supabase, etc.)
+  console.log('New early access signup:', email);
 }
-
-// Handle broken images gracefully
-document.querySelectorAll('.product-img img').forEach(img => {
-  img.addEventListener('error', function() {
-    this.style.display = 'none';
-    const fallback = this.parentElement.querySelector('.emoji-fallback');
-    if (fallback) fallback.style.display = 'flex';
-  });
-});
 </script>
 </body>
 </html>
