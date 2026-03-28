@@ -91,7 +91,7 @@ nav.scrolled { background: rgba(7,7,15,0.97); }
 
 /* ── CATEGORY TABS ── */
 .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); margin-bottom: 20px; }
-.cat-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; padding-top: 8px; }
+.cat-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; padding-top: 12px; padding-bottom: 4px; overflow-x: auto; }
 .cat-tab { background: var(--surface); border: 1px solid var(--border2); color: var(--text2); border-radius: 30px; padding: 9px 18px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; font-family: 'Syne', sans-serif; }
 .cat-tab:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
 .cat-tab.active { background: var(--gold); color: #07070F; border-color: var(--gold); }
@@ -252,7 +252,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: cente
 </div>
 
 <!-- PRODUCTS -->
-<section id="products" style="padding: 0 0 100px;">
+<section id="products" style="padding: 0 0 100px; scroll-margin-top: 80px;">
   <div class="wrap">
     <div class="section-label">Browse by Category</div>
     <div class="cat-tabs">
@@ -518,18 +518,18 @@ footer { border-top: 1px solid var(--border); padding: 40px 0; text-align: cente
   </div>
 </div>
 
-<!-- NOTIFY / LAUNCH -->
+<!-- 15% OFF FOUNDING CUSTOMER -->
 <div class="wrap">
   <div class="notify-section">
-    <div style="font-size:2.5rem;margin-bottom:16px;">🚀</div>
-    <h3>Shop is <em>launching soon</em></h3>
-    <p>We're setting up our Printify store now. Drop your email and you'll be first to know — plus get <strong style="color:var(--gold);">15% off your first order</strong> as a founding customer.</p>
+    <div style="font-size:2.5rem;margin-bottom:16px;">🎁</div>
+    <h3><em>15% off</em> your first order</h3>
+    <p>New to the PetHub shop? Drop your email and we'll send you a <strong style="color:var(--gold);">15% off code</strong> for your first order — valid on everything in the store. Welcome to the pack.</p>
     <div class="notify-form">
       <input type="email" id="notify-email" class="notify-input" placeholder="your@email.com">
-      <button class="btn-gold" onclick="notifyMe()">Get Early Access 🐾</button>
+      <button class="btn-gold" onclick="notifyMe()">Get My 15% Off 🐾</button>
     </div>
     <div id="notify-confirm" class="notify-confirm">
-      ✓ You're on the list! We'll email you when the shop goes live — with your 15% off code.
+      ✓ Check your inbox! Your 15% off code is on its way. Welcome to the pack. 🐾
     </div>
   </div>
 </div>
@@ -559,17 +559,13 @@ document.querySelectorAll('.cat-tab').forEach(tab => {
   tab.addEventListener('click', () => filterCat(tab.dataset.cat));
 });
 
-// Order button — opens notify section since store is launching soon
+// Order button — replace PRINTIFY_STORE_URL with your real Printify store URL
+const PRINTIFY_STORE_URL = 'https://pethub-shop.printify.me'; // ← swap this with your live store URL
 function orderItem(name, price) {
-  // Once Printify store is live, replace this with the actual product URL
-  const section = document.querySelector('.notify-section');
-  section.scrollIntoView({ behavior: 'smooth' });
-  section.style.borderColor = 'rgba(245,200,74,0.4)';
-  setTimeout(() => section.style.borderColor = '', 2000);
-  document.getElementById('notify-email').focus();
+  window.open(PRINTIFY_STORE_URL, '_blank');
 }
 
-// Email notify
+// 15% off email capture
 function notifyMe() {
   const email = document.getElementById('notify-email').value.trim();
   if (!email || !email.includes('@')) {
@@ -579,8 +575,8 @@ function notifyMe() {
   document.getElementById('notify-confirm').style.display = 'block';
   document.getElementById('notify-email').style.display = 'none';
   document.querySelector('[onclick="notifyMe()"]').style.display = 'none';
-  // TODO: Wire this to your email list (Mailchimp, Supabase, etc.)
-  console.log('New early access signup:', email);
+  // TODO: Wire to Supabase or Mailchimp to store email + send discount code
+  console.log('15% off signup:', email);
 }
 </script>
 </body>
