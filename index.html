@@ -575,8 +575,7 @@ function notifyMe() {
   document.getElementById('notify-confirm').style.display = 'block';
   document.getElementById('notify-email').style.display = 'none';
   document.querySelector('[onclick="notifyMe()"]').style.display = 'none';
-  // TODO: Wire to Supabase or Mailchimp to store email + send discount code
-  console.log('15% off signup:', email);
+  window.open('http://eepurl.com/jCNr_U', '_blank');
 }
 </script>
 </body>
