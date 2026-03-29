@@ -565,17 +565,36 @@ function orderItem(name, price) {
   window.open(PRINTIFY_STORE_URL, '_blank');
 }
 
-// 15% off email capture
-function notifyMe() {
+// Shop newsletter signup → Supabase
+const SUPABASE_URL = 'https://msuqflssqixsplcearxr.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1zdXFmbHNzcWl4c3BsY2VhcnhyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQxMzU3NDgsImV4cCI6MjA4OTcxMTc0OH0.BlrDiIu2YdDB7oHJ0fFiSEiBDQGvHCFAUaysR6O24zk';
+
+async function notifyMe() {
   const email = document.getElementById('notify-email').value.trim();
   if (!email || !email.includes('@')) {
     document.getElementById('notify-email').style.borderColor = '#FF5C6C';
     return;
   }
+
+  // Save to Supabase contact_submissions table
+  await fetch(`${SUPABASE_URL}/rest/v1/contact_submissions`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': SUPABASE_ANON_KEY,
+      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+    },
+    body: JSON.stringify({
+      name: 'Shop Subscriber',
+      email: email,
+      message: 'SHOP NEWSLETTER SIGNUP'
+    })
+  });
+
+  // Show confirmation
   document.getElementById('notify-confirm').style.display = 'block';
   document.getElementById('notify-email').style.display = 'none';
   document.querySelector('[onclick="notifyMe()"]').style.display = 'none';
-  window.open('http://eepurl.com/jCNr_U', '_blank');
 }
 </script>
 </body>
